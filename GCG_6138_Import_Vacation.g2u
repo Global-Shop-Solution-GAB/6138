@@ -1,0 +1,246 @@
+Program.Sub.ScreenSU.Start
+Gui.Form..Create
+Gui.Form..Caption("Import Employee Master Data from Kronos")
+Gui.Form..Size(13350,1815)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..MousePointer(0)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form.txtFilePath.Create(TextBox,"",True,9375,300,0,60,480,True,0,"Arial",8,-2147483643,1)
+Gui.Form.lbl1.Create(Label,"File Path (.csv)",True,1215,255,0,60,255,True,0,"Arial",8,-2147483633,0)
+Gui.Form.cmdBrowseFile.Create(Button)
+Gui.Form.cmdBrowseFile.Size(735,375)
+Gui.Form.cmdBrowseFile.Position(9510,435)
+Gui.Form.cmdBrowseFile.Caption("^")
+Gui.Form.cmdBrowseFile.Event(Click,cmdBrowseFile_Click)
+Gui.Form.cmdOK.Create(Button)
+Gui.Form.cmdOK.Size(855,375)
+Gui.Form.cmdOK.Position(60,885)
+Gui.Form.cmdOK.Caption("OK")
+Gui.Form.cmdOK.Event(Click,cmdOK_Click)
+Gui.Form.proBar.Create(ProgressBar)
+Gui.Form.proBar.Size(9105,135)
+Gui.Form.proBar.Position(1110,1005)
+Gui.Form.proBar.Visible(False)
+Gui.Form.dtpStartDateForPendingAppr.Create(DatePicker)
+Gui.Form.dtpStartDateForPendingAppr.Size(2340,285)
+Gui.Form.dtpStartDateForPendingAppr.Position(10440,480)
+Gui.Form.lbl2.Create(Label,"Start Date of the Next Payroll Period",True,4305,255,0,10380,225,True,0,"Arial",8,-2147483633,0)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'BN Feb, 2019
+'Customer: Life Emergency
+'Import Vacation Left from a csv file
+'Columns header: EMPLOYEE, NAME, Vacation Left
+'The program will read from the row 1 from the csv file. It assumes the file does not have header
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.bAdminGroup.Declare
+	
+	'Check if user is not in security group
+	F.Global.Security.IsInGroup(V.Caller.User,"ABSADMIN",V.Caller.CompanyCode,V.Local.bAdminGroup)
+	f.Intrinsic.Control.If(v.Local.bAdminGroup.Not)
+		f.Intrinsic.UI.Msgbox("You are not allowed to use this Program","Attention")
+		f.Intrinsic.Control.CallSub("Unload")
+	f.Intrinsic.Control.EndIf	
+	
+	f.ODBC.Connection!conx.OpenCompanyConnection
+	gui.Form..Show
+
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+        F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.cmdOK_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sSQL.Declare
+	v.Local.sRet.Declare
+	v.Local.sHold.Declare
+	v.Local.sNotPassed.Declare
+	
+	v.Local.sFilePath.Declare	
+	v.Local.sContent.Declare
+	v.Local.sLine.Declare
+	v.Local.sCheckBlankLine.Declare
+	v.Local.sVacationLeft.Declare
+	v.Local.sEmployee.Declare
+
+	v.Local.iExcelLine.Declare
+	v.Local.iCnt.Declare
+	v.Local.iError.Declare	
+	V.Local.iSuccess.Declare
+	v.Local.iEmployee.Declare
+	
+	v.Local.bExist.Declare
+	v.Local.bNumeric.Declare	
+
+	v.Local.fVariance.Declare
+	
+	
+	'Check file exist
+	f.Intrinsic.File.Exists(v.Screen.Form!txtFilePath.Text.Trim,v.Local.bExist)
+	f.Intrinsic.Control.If(v.Local.bExist.Not)
+		f.Intrinsic.UI.Msgbox("File does not exist. Please verify file path","No file found")
+		f.Intrinsic.Control.ExitSub		
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.UI.InvokeWaitDialog("Processing...")
+	
+	'Enable controls
+	gui.Form.cmdOK.Enabled(False)
+	gui.Form.proBar.Visible(True)
+	
+	'Get file content
+	F.Intrinsic.File.FileToStringArray(v.Screen.Form!txtFilePath.Text.Trim,v.Ambient.NewLine,v.Local.sContent)
+	f.Intrinsic.Control.If(v.Local.sContent.UBound,>=,0)
+		gui.Form.proBar.Max(v.Local.sContent.UBound)	
+	f.Intrinsic.Control.EndIf
+		
+	'Loop, process and upload
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sContent.UBound,1)
+		gui.Form.proBar.Value(v.Local.iCnt)
+		'Excel row number
+		f.Intrinsic.Math.Add(v.Local.iCnt,1,v.Local.iExcelLine)
+		'Check blank line
+		f.Intrinsic.String.Replace(v.Local.sContent(v.Local.iCnt).Trim,",","",v.Local.sCheckBlankLine)
+		f.Intrinsic.Control.If(v.Local.sCheckBlankLine.Trim,<>,"")
+			'Replace single and double quote
+			f.Intrinsic.String.Replace(v.Local.sContent(v.Local.iCnt),"'"," ",v.Local.sContent(v.Local.iCnt))
+			f.Intrinsic.String.Replace(v.Local.sContent(v.Local.iCnt),v.Ambient.DblQuote,"",v.Local.sContent(v.Local.iCnt))		
+			
+			'Split into cells
+			f.Intrinsic.String.Split(v.Local.sContent(v.Local.iCnt),",",v.Local.sLine)			
+			v.Local.sLine.RedimPreserve(0,3)
+			
+			'Check Employee number			
+			f.Intrinsic.Math.IsNumeric(v.Local.sLine(0).Trim,v.Local.bNumeric)
+			f.Intrinsic.Control.If(v.Local.bNumeric.Not)
+				f.Intrinsic.String.Build("{0}{1}Line: {2}, Column {3} , Reason: non Employee numeric value",v.Local.sNotPassed,v.Ambient.NewLine,v.Local.iExcelLine,"Rate",v.Local.sNotPassed)
+				f.Intrinsic.Math.Add(v.Local.iError,1,v.Local.iError)
+				v.Local.sLine(3).Set("Error Rate non numeric value")
+				f.Intrinsic.String.Join(v.Local.sLine,",",v.Local.sContent(v.Local.iCnt))
+				f.Intrinsic.Control.Next(v.Local.iCnt)			
+			f.Intrinsic.Control.EndIf		
+			
+			v.Local.iEmployee.Set(v.Local.sLine(0).Trim)
+			
+			f.Intrinsic.String.LPad(v.Local.iEmployee,"0",5,v.Local.sEmployee)
+			f.Intrinsic.String.Build("Select Employee,Name from Employee_MSTR where Employee = '{0}'",v.Local.sEmployee,v.Local.sSQL)
+			f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+			f.Intrinsic.Control.If(v.Local.sRet,=,"")
+				f.Intrinsic.String.Build("{0}{1}Line: {2}, Column {3} , Reason: Employee does not exists",v.Local.sNotPassed,v.Ambient.NewLine,v.Local.iExcelLine,"Employee",v.Local.sNotPassed)
+				f.Intrinsic.Math.Add(v.Local.iError,1,v.Local.iError)
+				v.Local.sLine(3).Set("Error Employee does  not exits")
+				f.Intrinsic.String.Join(v.Local.sLine,",",v.Local.sContent(v.Local.iCnt))
+				f.Intrinsic.Control.Next(v.Local.iCnt)
+			f.Intrinsic.Control.EndIf	
+			
+			'Vacation Left
+			f.Intrinsic.Math.IsNumeric(v.Local.sLine(2).Trim,v.Local.bNumeric)
+			f.Intrinsic.Control.If(v.Local.bNumeric.Not)
+				f.Intrinsic.String.Build("{0}{1}Line: {2}, Column {3} , Reason: non numeric value",v.Local.sNotPassed,v.Ambient.NewLine,v.Local.iExcelLine,"Rate",v.Local.sNotPassed)
+				f.Intrinsic.Math.Add(v.Local.iError,1,v.Local.iError)
+				v.Local.sLine(3).Set("Error Rate non numeric value")
+				f.Intrinsic.String.Join(v.Local.sLine,",",v.Local.sContent(v.Local.iCnt))
+				f.Intrinsic.Control.Next(v.Local.iCnt)
+			f.Intrinsic.Control.EndIf
+			f.Intrinsic.String.Format(v.Local.sLine(2),"####0.00",v.Local.sVacationLeft)		
+			
+			'Update Employee Mstr
+			f.Intrinsic.String.Build("Update Employee_MSTR set Vacation_Left = '{1}' where Employee = '{0}'",v.Local.sEmployee,v.Local.sVacationLeft,v.Local.sSQL)
+			f.ODBC.Connection!conx.Execute(v.Local.sSQL)
+			f.Intrinsic.Math.Add(v.Local.iSuccess,1,v.Local.iSuccess)
+		
+			'Rebuild file
+			f.Intrinsic.String.Build("Uploaded: {0}",v.Ambient.Now,v.Local.sHold)
+			v.Local.sLine(3).Set(v.Local.sHold)
+			f.Intrinsic.String.Join(v.Local.sLine,",",v.Local.sContent(v.Local.iCnt))
+			
+		f.Intrinsic.Control.EndIf	
+	f.Intrinsic.Control.Next(v.Local.iCnt)	
+		
+	'Save result file	
+	f.Intrinsic.UI.ChangeWaitStatus("Saving file...")	
+	F.Intrinsic.String.Join(v.Local.sContent,v.Ambient.NewLine,v.Local.sContent)
+	f.Intrinsic.String.Replace(v.Screen.Form!txtFilePath.Text.Trim,".csv","",v.Local.sFilePath)
+	f.Intrinsic.String.Build("{0}_{1}.csv",v.Local.sFilePath,v.Ambient.Now.FormatMMDDYYYYHhNnSs,v.Local.sFilePath)
+	f.Intrinsic.File.String2File(v.Local.sFilePath,v.Local.sContent)	
+	f.Intrinsic.UI.CloseWaitDialog
+	
+	v.Local.dStartDateForPendingAppr.Declare
+	f.Intrinsic.Control.If(v.Local.iSuccess,>,0)
+		v.Local.dStartDateForPendingAppr.Set(v.Screen.Form!dtpStartDateForPendingAppr.Value)
+		f.Intrinsic.String.Build("Insert into GCG_6138_Date_Import (dateImport) values ('{0}')",v.Local.dStartDateForPendingAppr.PervasiveDate,v.Local.sSQL)
+		f.ODBC.Connection!conx.Execute("Delete from GCG_6138_Date_Import")
+		f.ODBC.Connection!conx.Execute(v.Local.sSQL)
+	f.Intrinsic.Control.EndIf		
+	
+	'Display final message
+	f.Intrinsic.Control.If(v.Local.sNotPassed.Trim,<>,"")
+		f.Intrinsic.String.Build("{0} errors: {1}.{2}{2}{3} rows have been uploaded in GSS.",v.Local.iError,v.Local.sNotPassed,v.Ambient.NewLine,v.Local.iSuccess,v.Local.sError)
+		f.Intrinsic.UI.Msgbox(v.Local.sError,"Error")
+	f.Intrinsic.Control.Else
+		f.Intrinsic.UI.Msgbox("Completed")
+	f.Intrinsic.Control.EndIf	
+	
+	'Unload
+	f.Intrinsic.Control.CallSub("Unload")
+	
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+        F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdOK_Click.End
+
+Program.Sub.cmdBrowseFile_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sFilePath.Declare
+	v.Local.sDir.Declare
+	
+	'Default folder
+	f.Intrinsic.String.Build("{0}\Custom\6138",v.Caller.BusintDir,v.Local.sDir)
+	F.Intrinsic.UI.ShowOpenFileDialog(V.Local.sDir,"*|*.csv*","",V.Local.sFilePath)
+	F.Intrinsic.Control.If(V.Local.sFilePath,=,"***CANCEL***")
+		F.Intrinsic.UI.Msgbox("No File Was Selected")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	gui.Form.txtFilePath.Text(v.Local.sFilePath)
+
+F.Intrinsic.Control.Catch
+    F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+    F.Intrinsic.UI.Msgbox(V.Local.sError)
+        F.Intrinsic.Control.CallSub(Unload)
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseFile_Click.End
+
+Program.Sub.Form_UnLoad.Start
+f.Intrinsic.Control.CallSub("Unload")
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.Unload.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+
+	F.Intrinsic.Control.If(V.ODBC.conx.State,=,1)
+		F.ODBC.Connection!conx.close
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	Function.Intrinsic.String.Build("Subroutine Error {0}{0}Subroutine: {1}{0}Error Occurred {2} with description {3}",V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.Unload.End
