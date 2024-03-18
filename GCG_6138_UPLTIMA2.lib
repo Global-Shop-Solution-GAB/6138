@@ -1,0 +1,113 @@
+Program.Sub.Preflight.Start
+F.Data.DataTable.Create("UPLTIMA2",True)
+F.Data.DataTable.AddColumn("UPLTIMA2","Employee","String")
+F.Data.DataTable.AddColumn("UPLTIMA2","ChargeDate","Date")
+F.Data.DataTable.AddColumn("UPLTIMA2","DateTimeIn","DateTime",V.Ambient.Now)
+F.Data.DataTable.AddColumn("UPLTIMA2","DateTimeOut","DateTime",V.Ambient.Now)
+F.Data.DataTable.AddColumn("UPLTIMA2","EmployeeName","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","Department","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","Shift","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","Group","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","RecordType","String")
+F.Data.DataTable.AddColumn("UPLTIMA2","EarningsCode","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","Paid","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","Excused","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","AbsenceDescription","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","ClockedIn","String","")
+F.Data.DataTable.AddColumn("UPLTIMA2","BalancedAsDate","Date",V.Ambient.Date)
+Program.Sub.Preflight.End
+
+Program.Sub.UPLTIMA2.Start
+V.Local.sFilePath.Declare
+V.Local.sFile.Declare
+V.Local.sLine.Declare
+V.Local.sValue.Declare
+V.Local.iCnt.Declare
+V.Local.bExists.Declare
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.If(V.DataTable.UPLTIMA2.RowCount,>,0)
+	F.Intrinsic.String.Build("{0}\TIMECARD_DATA.TXT",V.Caller.FilesDir,V.Local.sFilePath)
+	
+	F.Intrinsic.Control.For(V.Local.iCnt,0,V.DataTable.UPLTIMA2.RowCount--,1)
+		'Employee (1 - 5) (5 char)
+		F.Intrinsic.String.LPad(V.DataTable.UPLTIMA2(V.Local.iCnt).Employee!FieldVal,"0",5,V.Local.sValue)
+		V.Local.sLine.Set(V.Local.sValue.Right5)
+		'Charge Date (6 - 13) (8 char)
+		F.Intrinsic.String.Format(V.DataTable.UPLTIMA2(V.Local.iCnt).ChargeDate!FieldVal,"YYYYMMDD",V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue,V.Local.sLine)
+		'Date In (14 - 21) (8 char)
+		F.Intrinsic.String.Format(V.DataTable.UPLTIMA2(V.Local.iCnt).DateTimeIn!FieldVal,"YYYYMMDD",V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue,V.Local.sLine)
+		'Time In (22 - 27) (6 char)
+		F.Intrinsic.String.Format(V.DataTable.UPLTIMA2(V.Local.iCnt).DateTimeIn!FieldVal,"HHNNSS",V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue,V.Local.sLine)
+		'Date Out (28 - 35) (8 char)
+		F.Intrinsic.String.Format(V.DataTable.UPLTIMA2(V.Local.iCnt).DateTimeOut!FieldVal,"YYYYMMDD",V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue,V.Local.sLine)
+		'Time Out (36 - 41) (6 char)
+		F.Intrinsic.String.Format(V.DataTable.UPLTIMA2(V.Local.iCnt).DateTimeOut!FieldVal,"HHNNSS",V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue,V.Local.sLine)
+		'Employee Name (42 - 71) (30 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).EmployeeName!FieldVal," ",30,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left30,V.Local.sLine)
+		'Department (72 - 75) (4 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).Department!FieldVal," ",4,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left4,V.Local.sLine)
+		'Shift (76) (1 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).Shift!FieldVal," ",1,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left1,V.Local.sLine)
+		'Group (77 - 84) (8 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).Group!FieldVal," ",8,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left8,V.Local.sLine)
+		'Record Type (85) (1 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).RecordType!FieldVal," ",1,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left1,V.Local.sLine)
+		'Earnings Code (86 - 87) (2 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).EarningsCode!FieldVal," ",2,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left2,V.Local.sLine)
+		'Paid (88) (1 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).Paid!FieldVal," ",1,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left1,V.Local.sLine)
+		'Excused (89) (1 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).Excused!FieldVal," ",1,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left1,V.Local.sLine)
+		'Absence Description (90 - 109) (20 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).AbsenceDescription!FieldVal," ",20,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left20,V.Local.sLine)
+		'Clocked In (110) (1 char)
+		F.Intrinsic.String.RPad(V.DataTable.UPLTIMA2(V.Local.iCnt).ClockedIn!FieldVal," ",1,V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue.Left1,V.Local.sLine)
+		'Balanced As Date (111 - 118) (8 char)
+		F.Intrinsic.String.Format(V.DataTable.UPLTIMA2(V.Local.iCnt).BalancedAsDate!FieldVal,"YYYYMMDD",V.Local.sValue)
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sLine,V.Local.sValue,V.Local.sLine)
+		
+		F.Intrinsic.Control.If(V.Local.sFile.Trim,!=,"")
+			F.Intrinsic.String.Build("{0}{1}",V.Local.sFile,V.Ambient.NewLine,V.Local.sFile)
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.String.Build("{0}{1}",V.Local.sFile,V.Local.sLine,V.Local.sFile)
+	F.Intrinsic.Control.Next(V.Local.iCnt)
+	
+	F.Data.DataTable.DeleteRow("UPLTIMA2")
+	F.Data.DataTable.AcceptChanges("UPLTIMA2")
+	
+	F.Intrinsic.File.Exists(V.Local.sFilePath,V.Local.bExists)
+	F.Intrinsic.Control.If(V.Local.bExists)
+		F.Intrinsic.File.DeleteFile(V.Local.sFilePath)
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.File.String2File(V.Local.sFilePath,V.Local.sFile)
+	F.Global.General.CallWrapperSync(50,"UPLTIMA2")
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.CallSub(ErrorMessageUPLTIMA2,"ScriptFile",V.Caller.ScriptFile,"CurrentSubroutine",V.Ambient.CurrentSubroutine)
+	F.Intrinsic.Control.End
+F.Intrinsic.Control.EndTry
+Program.Sub.UPLTIMA2.End
+
+Program.Sub.ErrorMessageUPLTIMA2.Start
+'Arguments: ScriptFile, CurrentSubroutine
+V.Local.sError.Declare
+F.Intrinsic.String.Build("Project: {0}{1}{1}Subroutine: {2}{1}Error Occurred {3} with description {4}{1}{1}GAB Version: {5}",V.Args.ScriptFile,V.Ambient.Newline,V.Args.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,V.Local.sError)
+F.Intrinsic.UI.Msgbox(V.Local.sError)
+Program.Sub.ErrorMessageUPLTIMA2.End
