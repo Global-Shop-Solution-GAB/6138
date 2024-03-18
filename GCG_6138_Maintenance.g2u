@@ -1,0 +1,1354 @@
+﻿Program.Sub.ScreenSU.Start
+Gui.Form..Create
+Gui.Form..Caption("Maintenance  - Absence Request")
+Gui.Form..Size(14970,10320)
+Gui.Form..MinX(0)
+Gui.Form..MinY(0)
+Gui.Form..Position(0,0)
+Gui.Form..BackColor(-2147483633)
+Gui.Form..MousePointer(0)
+Gui.Form..Event(UnLoad,Form_UnLoad)
+Gui.Form.cmdSave.Create(Button)
+Gui.Form.cmdSave.Size(855,375)
+Gui.Form.cmdSave.Position(120,9540)
+Gui.Form.cmdSave.Caption("Save")
+Gui.Form.cmdSave.Event(Click,cmdSave_Click)
+Gui.Form.cmdSave.TabStop(True)
+Gui.Form.cmdSave.TabIndex(13)
+Gui.Form.cmdSave.Anchor(6)
+Gui.Form.TabControl.Create(Tab)
+Gui.Form.TabControl.Size(14625,9480)
+Gui.Form.TabControl.Position(105,0)
+Gui.Form.TabControl.Anchor(15)
+Gui.Form.TabControl.Tabs(3)
+Gui.Form.TabControl.SetTab(0)
+Gui.Form.TabControl.Caption("General")
+Gui.Form.TabControl.SetTab(1)
+Gui.Form.TabControl.Caption("Supervisor")
+Gui.Form.TabControl.SetTab(2)
+Gui.Form.TabControl.Caption("Canceled Requests")
+Gui.Form.fr1.Create(Frame)
+Gui.Form.fr1.Size(4725,4875)
+Gui.Form.fr1.Position(75,15)
+Gui.Form.fr1.Parent("TabControl",0)
+Gui.Form.lbl1.Create(Label,"Prefix from Employee Badge Scanning",True,2910,255,0,90,240,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl1.Parent("fr1")
+Gui.Form.txtPrefix.Create(TextBox,"",True,570,300,0,90,450,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtPrefix.Parent("fr1")
+Gui.Form.txtPrefix.TabStop(True)
+Gui.Form.txtPrefix.TabIndex(1)
+Gui.Form.chkUseAlpha.Create(CheckBox)
+Gui.Form.chkUseAlpha.Size(4425,360)
+Gui.Form.chkUseAlpha.Position(90,810)
+Gui.Form.chkUseAlpha.Parent("fr1")
+Gui.Form.chkUseAlpha.Caption("Use Alpha Sort Code to Map Employee")
+Gui.Form.chkUseAlpha.TabStop(True)
+Gui.Form.chkUseAlpha.TabIndex(2)
+Gui.Form.lbl8.Create(Label,"Values for History Period Dropdown List:",False,3180,255,0,90,1680,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl8.Parent("fr1")
+Gui.Form.chkAll.Create(CheckBox)
+Gui.Form.chkAll.Size(690,360)
+Gui.Form.chkAll.Position(450,1890)
+Gui.Form.chkAll.Parent("fr1")
+Gui.Form.chkAll.Caption("All")
+Gui.Form.chkAll.TabStop(True)
+Gui.Form.chkAll.TabIndex(3)
+Gui.Form.chkAll.Visible(False)
+Gui.Form.chkLast3Years.Create(CheckBox)
+Gui.Form.chkLast3Years.Size(1740,360)
+Gui.Form.chkLast3Years.Position(450,2325)
+Gui.Form.chkLast3Years.Parent("fr1")
+Gui.Form.chkLast3Years.Caption("Last 3 years")
+Gui.Form.chkLast3Years.TabStop(True)
+Gui.Form.chkLast3Years.TabIndex(4)
+Gui.Form.chkLast3Years.Visible(False)
+Gui.Form.chkLast365.Create(CheckBox)
+Gui.Form.chkLast365.Size(1875,360)
+Gui.Form.chkLast365.Position(2460,2325)
+Gui.Form.chkLast365.Parent("fr1")
+Gui.Form.chkLast365.Caption("Last 365 days")
+Gui.Form.chkLast365.TabStop(True)
+Gui.Form.chkLast365.TabIndex(5)
+Gui.Form.chkLast365.Visible(False)
+Gui.Form.chkLast180.Create(CheckBox)
+Gui.Form.chkLast180.Size(1800,360)
+Gui.Form.chkLast180.Position(450,2745)
+Gui.Form.chkLast180.Parent("fr1")
+Gui.Form.chkLast180.Caption("Last 180 days")
+Gui.Form.chkLast180.TabStop(True)
+Gui.Form.chkLast180.TabIndex(6)
+Gui.Form.chkLast180.Visible(False)
+Gui.Form.chkLast30.Create(CheckBox)
+Gui.Form.chkLast30.Size(2070,360)
+Gui.Form.chkLast30.Position(2460,2745)
+Gui.Form.chkLast30.Parent("fr1")
+Gui.Form.chkLast30.Caption("Last 30 days")
+Gui.Form.chkLast30.TabStop(True)
+Gui.Form.chkLast30.TabIndex(7)
+Gui.Form.chkLast30.Visible(False)
+Gui.Form.chkAllowAddMoreRequests.Create(CheckBox)
+Gui.Form.chkAllowAddMoreRequests.Size(4560,360)
+Gui.Form.chkAllowAddMoreRequests.Position(90,1200)
+Gui.Form.chkAllowAddMoreRequests.Parent("fr1")
+Gui.Form.chkAllowAddMoreRequests.Caption("Allow Adding Request when having In Process Requests")
+Gui.Form.chkUseGSSPayroll.Create(CheckBox)
+Gui.Form.chkUseGSSPayroll.Size(3795,360)
+Gui.Form.chkUseGSSPayroll.Position(105,3150)
+Gui.Form.chkUseGSSPayroll.Parent("fr1")
+Gui.Form.chkUseGSSPayroll.Caption("Use GSS Payroll to deduct Vacation")
+Gui.Form.chkUseGSSPayroll.Event(Click,chkUseGSSPayroll_Click)
+Gui.Form.chkUseGSSPayroll.Visible(False)
+Gui.Form.lbl21.Create(Label,"PTO Earning Code",True,1440,255,0,60,3555,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl21.Parent("fr1")
+Gui.Form.txtPtoVacCodes.Create(TextBox,"",True,375,300,0,90,3780,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtPtoVacCodes.Parent("fr1")
+Gui.Form.txtPtoVacCodes.TabStop(True)
+Gui.Form.txtPtoVacCodes.TabIndex(1)
+Gui.Form.txtPtoVacCodes.MaxLength(2)
+Gui.Form.lbl22.Create(Label,"Sick Time Earning Code",True,1845,255,0,1605,3555,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl22.Parent("fr1")
+Gui.Form.txtSickVacCodes.Create(TextBox,"",True,375,300,0,1635,3780,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtSickVacCodes.Parent("fr1")
+Gui.Form.txtSickVacCodes.TabStop(True)
+Gui.Form.txtSickVacCodes.TabIndex(1)
+Gui.Form.txtSickVacCodes.MaxLength(2)
+Gui.Form.lbl24.Create(Label,"Floating Holiday Earning Code",True,2310,255,0,60,4185,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl24.Parent("fr1")
+Gui.Form.txtFlaotingVacCodes.Create(TextBox,"",True,375,300,0,90,4410,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtFlaotingVacCodes.Parent("fr1")
+Gui.Form.txtFlaotingVacCodes.TabStop(True)
+Gui.Form.txtFlaotingVacCodes.TabIndex(1)
+Gui.Form.txtFlaotingVacCodes.MaxLength(2)
+Gui.Form.txtFloatingHours.Create(TextBox,"",True,900,300,0,2460,4410,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtFloatingHours.Parent("fr1")
+Gui.Form.txtFloatingHours.Anchor(9)
+Gui.Form.txtFloatingHours.NumericOnly(2)
+Gui.Form.txtFloatingHours.TabStop(True)
+Gui.Form.txtFloatingHours.TabIndex(1)
+Gui.Form.lbl25.Create(Label,"Beginning Balance",True,1470,255,0,2400,4185,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl25.Parent("fr1")
+Gui.Form.txtUnpaidVacCodes.Create(TextBox,"",True,375,300,0,90,3135,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtUnpaidVacCodes.Parent("fr1")
+Gui.Form.txtUnpaidVacCodes.TabStop(True)
+Gui.Form.txtUnpaidVacCodes.TabIndex(1)
+Gui.Form.txtUnpaidVacCodes.MaxLength(2)
+Gui.Form.lbl26.Create(Label,"Unpaid Earning Code",True,1620,255,0,60,2895,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl26.Parent("fr1")
+Gui.Form.fr2.Create(Frame)
+Gui.Form.fr2.Size(9390,4875)
+Gui.Form.fr2.Position(4965,15)
+Gui.Form.fr2.Parent("TabControl",0)
+Gui.Form.fr2.Anchor(9)
+Gui.Form.lbl3.Create(Label,"Category",True,870,255,0,120,225,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl3.Parent("fr2")
+Gui.Form.gsCategory.Create(GsGridControl)
+Gui.Form.gsCategory.Size(5025,4260)
+Gui.Form.gsCategory.Position(120,450)
+Gui.Form.gsCategory.Parent("fr2")
+Gui.Form.gsCategory.TabStop(True)
+Gui.Form.gsCategory.TabIndex(14)
+Gui.Form.gsCategory.Event(RowCellClick,gsCategory_RowCellClick)
+Gui.Form.gsCategory.Anchor(13)
+Gui.Form.lbl4.Create(Label,"Default Start Time",True,1575,255,0,5535,510,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl4.Parent("fr2")
+Gui.Form.lbl4.Anchor(9)
+Gui.Form.lbl5.Create(Label,"Default End Time",True,1590,255,0,5535,930,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl5.Parent("fr2")
+Gui.Form.lbl5.Anchor(9)
+Gui.Form.lbl6.Create(Label,"Default Hours",True,1515,255,0,5535,1365,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl6.Parent("fr2")
+Gui.Form.lbl6.Anchor(9)
+Gui.Form.lbl12.Create(Label,":",True,150,255,0,8205,495,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl12.Parent("fr2")
+Gui.Form.lbl12.Anchor(9)
+Gui.Form.ddlDefautStartHour.Create(DropDownList)
+Gui.Form.ddlDefautStartHour.Size(900,330)
+Gui.Form.ddlDefautStartHour.Position(7290,420)
+Gui.Form.ddlDefautStartHour.Parent("fr2")
+Gui.Form.ddlDefautStartHour.Anchor(9)
+Gui.Form.lbl13.Create(Label,"Hour",True,660,255,0,7305,180,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl13.Parent("fr2")
+Gui.Form.lbl13.Anchor(9)
+Gui.Form.lbl14.Create(Label,"Minute",True,840,255,0,8310,180,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl14.Parent("fr2")
+Gui.Form.lbl14.Anchor(9)
+Gui.Form.ddlDefautStartMinute.Create(DropDownList)
+Gui.Form.ddlDefautStartMinute.Size(900,330)
+Gui.Form.ddlDefautStartMinute.Position(8370,420)
+Gui.Form.ddlDefautStartMinute.Parent("fr2")
+Gui.Form.ddlDefautStartMinute.Anchor(9)
+Gui.Form.ddlDefautEndHour.Create(DropDownList)
+Gui.Form.ddlDefautEndHour.Size(900,330)
+Gui.Form.ddlDefautEndHour.Position(7290,855)
+Gui.Form.ddlDefautEndHour.Parent("fr2")
+Gui.Form.ddlDefautEndHour.Anchor(9)
+Gui.Form.ddlDefautEndMinute.Create(DropDownList)
+Gui.Form.ddlDefautEndMinute.Size(900,330)
+Gui.Form.ddlDefautEndMinute.Position(8370,840)
+Gui.Form.ddlDefautEndMinute.Parent("fr2")
+Gui.Form.ddlDefautEndMinute.Anchor(9)
+Gui.Form.lbl15.Create(Label,":",True,150,255,0,8205,930,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl15.Parent("fr2")
+Gui.Form.lbl15.Anchor(9)
+Gui.Form.ddlDefautHourMinute.Create(DropDownList)
+Gui.Form.ddlDefautHourMinute.Size(900,330)
+Gui.Form.ddlDefautHourMinute.Position(8370,1260)
+Gui.Form.ddlDefautHourMinute.Parent("fr2")
+Gui.Form.ddlDefautHourMinute.Anchor(9)
+Gui.Form.lbl16.Create(Label,":",True,150,255,0,8205,1365,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl16.Parent("fr2")
+Gui.Form.lbl16.Anchor(9)
+Gui.Form.txtDefaultHourHour.Create(TextBox,"",True,900,300,0,7290,1275,True,0,"Arial",8,-2147483643,2)
+Gui.Form.txtDefaultHourHour.Parent("fr2")
+Gui.Form.txtDefaultHourHour.NumericOnly(2)
+Gui.Form.txtDefaultHourHour.Anchor(9)
+Gui.Form.txtEarningCode.Create(TextBox,"",True,330,300,0,7290,1665,True,0,"Arial",8,-2147483643,2)
+Gui.Form.txtEarningCode.Parent("fr2")
+Gui.Form.txtEarningCode.MaxLength(2)
+Gui.Form.txtEarningCode.Anchor(9)
+Gui.Form.lbl19.Create(Label,"Earning Code",True,1485,255,0,5535,1785,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl19.Parent("fr2")
+Gui.Form.lbl19.Anchor(9)
+Gui.Form.lbl20.Create(Label,"Description",True,1335,255,0,5535,2190,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl20.Parent("fr2")
+Gui.Form.lbl20.Anchor(9)
+Gui.Form.txtECDescr.Create(TextBox,"",True,1350,300,0,7290,2055,True,0,"Arial",8,-2147483643,2)
+Gui.Form.txtECDescr.Parent("fr2")
+Gui.Form.txtECDescr.MaxLength(30)
+Gui.Form.txtECDescr.Anchor(9)
+Gui.Form.cmdAddEC.Create(Button)
+Gui.Form.cmdAddEC.Size(855,375)
+Gui.Form.cmdAddEC.Position(7275,2430)
+Gui.Form.cmdAddEC.Parent("fr2")
+Gui.Form.cmdAddEC.Caption("Add")
+Gui.Form.cmdAddEC.Event(Click,cmdAddEC_Click)
+Gui.Form.cmdAddEC.Anchor(9)
+Gui.Form.fr3.Create(Frame)
+Gui.Form.fr3.Size(14295,3810)
+Gui.Form.fr3.Position(75,4935)
+Gui.Form.fr3.Parent("TabControl",0)
+Gui.Form.fr3.Anchor(14)
+Gui.Form.lbl2.Create(Label,"Default Text for Approve Email",True,2505,255,0,120,660,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl2.Parent("fr3")
+Gui.Form.lbl10.Create(Label,"Default Text for Reject Email",True,2205,255,0,120,2220,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl10.Parent("fr3")
+Gui.Form.txtDefaultApprovedText.Create(TextBoxR)
+Gui.Form.txtDefaultApprovedText.Size(14070,1185)
+Gui.Form.txtDefaultApprovedText.Position(120,915)
+Gui.Form.txtDefaultApprovedText.Parent("fr3")
+Gui.Form.txtDefaultRejectedText.Create(TextBoxR)
+Gui.Form.txtDefaultRejectedText.Size(14025,1185)
+Gui.Form.txtDefaultRejectedText.Position(120,2475)
+Gui.Form.txtDefaultRejectedText.Parent("fr3")
+Gui.Form.lbl23.Create(Label,"System Email",True,1425,255,0,165,270,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl23.Parent("fr3")
+Gui.Form.txtSystemEmail.Create(TextBox,"",True,3075,300,0,1635,195,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtSystemEmail.Parent("fr3")
+Gui.Form.frSupervisor.Create(Frame)
+Gui.Form.frSupervisor.Size(14310,8955)
+Gui.Form.frSupervisor.Position(90,75)
+Gui.Form.frSupervisor.Parent("TabControl",1)
+Gui.Form.frSupervisor.Anchor(15)
+Gui.Form.gsSupervisors.Create(GsGridControl)
+Gui.Form.gsSupervisors.Size(14055,6510)
+Gui.Form.gsSupervisors.Position(120,2310)
+Gui.Form.gsSupervisors.Parent("frSupervisor")
+Gui.Form.gsSupervisors.Event(RowCellClick,gsSupervisors_RowCellClick)
+Gui.Form.gsSupervisors.Anchor(15)
+Gui.Form.txtManager.Create(TextBox,"",True,900,300,0,135,540,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtManager.Parent("frSupervisor")
+Gui.Form.txtManager.Event(LostFocus,txtManager_LostFocus)
+Gui.Form.txtNameManager.Create(TextBox,"",True,1920,300,0,1230,540,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtNameManager.Parent("frSupervisor")
+Gui.Form.txtUserIDManager.Create(TextBox,"",True,1065,300,0,3300,540,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtUserIDManager.Parent("frSupervisor")
+Gui.Form.cmdBrowseManager.Create(Button)
+Gui.Form.cmdBrowseManager.Size(750,375)
+Gui.Form.cmdBrowseManager.Position(4530,495)
+Gui.Form.cmdBrowseManager.Parent("frSupervisor")
+Gui.Form.cmdBrowseManager.Caption("^")
+Gui.Form.cmdBrowseManager.Event(Click,cmdBrowseManager_Click)
+Gui.Form.cmdAddManager.Create(Button)
+Gui.Form.cmdAddManager.Size(750,375)
+Gui.Form.cmdAddManager.Position(135,1710)
+Gui.Form.cmdAddManager.Parent("frSupervisor")
+Gui.Form.cmdAddManager.Caption("Add")
+Gui.Form.cmdAddManager.Event(Click,cmdAddManager_Click)
+Gui.Form.lbl7.Create(Label,"Emp ID",True,630,255,0,135,300,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl7.Parent("frSupervisor")
+Gui.Form.lbl9.Create(Label,"Name",True,825,255,0,1200,300,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl9.Parent("frSupervisor")
+Gui.Form.lbl11.Create(Label,"User ID",True,630,255,0,3300,315,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl11.Parent("frSupervisor")
+Gui.Form.txtDept.Create(TextBox,"",True,900,300,0,135,1200,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtDept.Parent("frSupervisor")
+Gui.Form.txtDept.Event(LostFocus,txtDept_LostFocus)
+Gui.Form.txtDescrDept.Create(TextBox,"",True,3120,300,0,1230,1200,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtDescrDept.Parent("frSupervisor")
+Gui.Form.cmdBrowseDept.Create(Button)
+Gui.Form.cmdBrowseDept.Size(675,375)
+Gui.Form.cmdBrowseDept.Position(4530,1170)
+Gui.Form.cmdBrowseDept.Parent("frSupervisor")
+Gui.Form.cmdBrowseDept.Caption("^")
+Gui.Form.cmdBrowseDept.Event(Click,cmdBrowseDept_Click)
+Gui.Form.lbl17.Create(Label,"Group",True,630,255,0,135,990,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl17.Parent("frSupervisor")
+Gui.Form.lbl18.Create(Label,"Description",True,1245,255,0,1200,990,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lbl18.Parent("frSupervisor")
+Gui.Form.ddlECs.Create(DropDownList)
+Gui.Form.ddlECs.Size(1095,330)
+Gui.Form.ddlECs.Position(5730,510)
+Gui.Form.ddlECs.Parent("frSupervisor")
+Gui.Form.lblEarningCode.Create(Label,"Earning Code",True,1935,255,0,5730,300,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lblEarningCode.Parent("frSupervisor")
+Gui.Form.txtCanceledNum.Create(TextBox,"",True,1215,300,0,120,285,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtCanceledNum.Parent("TabControl",2)
+Gui.Form.txtCanceledNum.Locked(True)
+Gui.Form.lblCanceledNum.Create(Label,"Number of Canceled Requests",True,2325,255,0,105,75,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lblCanceledNum.Parent("TabControl",2)
+Gui.Form.txtCanceledBeg.Create(TextBox,"",True,1035,300,0,2850,285,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtCanceledBeg.Parent("TabControl",2)
+Gui.Form.txtCanceledBeg.Locked(True)
+Gui.Form.lblCanceledBeg.Create(Label,"Starting From:",True,1125,255,0,2835,75,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lblCanceledBeg.Parent("TabControl",2)
+Gui.Form.txtCanceledEnd.Create(TextBox,"",True,1035,300,0,4035,285,True,0,"Arial",8,-2147483643,1)
+Gui.Form.txtCanceledEnd.Parent("TabControl",2)
+Gui.Form.txtCanceledEnd.Locked(True)
+Gui.Form.lblCanceledEnd.Create(Label,"Ending At:",True,1125,255,0,4020,75,True,0,"Arial",8,-2147483633,0)
+Gui.Form.lblCanceledEnd.Parent("TabControl",2)
+Gui.Form.gsgcCanceled.Create(GsGridControl)
+Gui.Form.gsgcCanceled.Size(14595,8355)
+Gui.Form.gsgcCanceled.Position(0,690)
+Gui.Form.gsgcCanceled.Parent("TabControl",2)
+Gui.Form.gsgcCanceled.Anchor(15)
+Gui.Form.gsgcCanceled.Event(RowCellClick,gsgcCanceled_RowCellClick)
+Gui.Form.cmdCanceledDel.Create(Button)
+Gui.Form.cmdCanceledDel.Size(855,375)
+Gui.Form.cmdCanceledDel.Position(5280,165)
+Gui.Form.cmdCanceledDel.Parent("TabControl",2)
+Gui.Form.cmdCanceledDel.Caption("Delete")
+Gui.Form.cmdCanceledDel.Event(Click,cmdCanceledDel_Click)
+Program.Sub.ScreenSU.End
+
+Program.Sub.Preflight.Start
+V.Global.iCon.Declare
+Program.Sub.Preflight.End
+
+Program.Sub.Main.Start
+'BN, Feb 2019
+'Maintenance script for Absence Request
+
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.iCatYear.Declare
+	V.Local.sHold.Declare
+	v.Local.bAdminGroup.Declare	
+	
+	F.Global.Object.CreateDB("GlobalDB",V.Caller.CompanyCode,V.Ambient.DBServerName,True,V.Global.iCon)
+	
+	
+	f.ODBC.Connection!conx.OpenCompanyConnection
+
+	'Check if user is not in security group
+	F.Global.Security.IsInGroup(V.Caller.User,"ABSADMIN",V.Caller.CompanyCode,V.Local.bAdminGroup)
+	F.Intrinsic.Control.If(V.Caller.User,=,"SUPERVSR")
+		V.Local.bAdminGroup.Set(True)
+	F.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Local.bAdminGroup.Not)
+		f.Intrinsic.UI.Msgbox("You are not allowed to use this Maintenance Program","Attention")
+		f.Intrinsic.Control.CallSub("Unload")
+	f.Intrinsic.Control.EndIf
+	
+	'**** Note 1:  As the Pay category core table is not identical in different GSS version, so this chunk of codes will not be used
+	'In fact, we will ask user to add EC code to the grid
+	
+'	'The Year number is used to get the references in PAYROLL_PAY_CATS
+'	f.Intrinsic.UI.InputBox ("Please select the Year to retrieve Payroll Category Codes","Year for Payroll Category Code",v.Ambient.Date.FormatYYYY,v.Local.sHold)
+'	f.Intrinsic.Control.If(v.Local.sHold,<>,"***CANCEL***")
+'		f.Intrinsic.Control.If(v.Local.sHold.IsNumeric,=,True)
+'			V.Local.iCatYear.Set(V.Local.sHold)
+'		f.Intrinsic.Control.Else
+'			f.Intrinsic.UI.Msgbox("Invalid Year","End Program")
+'			f.Intrinsic.Control.CallSub("Unload")
+'		f.Intrinsic.Control.EndIf	
+'	f.Intrinsic.Control.Else
+'		f.Intrinsic.Control.CallSub("Unload")
+'	f.Intrinsic.Control.EndIf
+	'**************************************************************************************************************************	
+	
+	'Binding
+	f.Intrinsic.Control.CallSub("Binding","iCatYear",v.Local.iCatYear)
+	
+	'Canceled check module
+	F.Intrinsic.Control.CallSub(GetCanceledReqs)
+	
+	gui.Form.TabControl.SetTab(0)
+	
+	gui.Form..Show
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Main.End
+
+Program.Sub.UnLoad.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	
+	F.Intrinsic.Control.If(V.ODBC.conx.State,=,1)
+		F.ODBC.Connection!conx.close
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.Control.End
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	F.Intrinsic.Control.End	
+F.Intrinsic.Control.EndTry
+Program.Sub.UnLoad.End
+
+Program.Sub.Form_UnLoad.Start
+f.Intrinsic.Control.CallSub("Unload")
+Program.Sub.Form_UnLoad.End
+
+Program.Sub.Binding.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sRet.Declare
+	v.Local.sSQL.Declare
+	v.Local.iCnt.Declare
+	v.Local.fHold.Declare
+	v.Local.sHold.Declare
+	v.Local.sFilter.Declare
+	V.Local.sECSort.Declare
+	V.Local.sDescrSort.Declare
+	
+	'Prefix from employee badge scanning
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'ScanPrefix'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,<>,"")
+		gui.Form.txtPrefix.Text(v.Local.sRet.Trim)
+	f.Intrinsic.Control.EndIf
+	'Use Alpha Sort
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'UseAlphaSort'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,=,"Y")
+		gui.Form.chkUseAlpha.Value(True)
+	f.Intrinsic.Control.EndIf	
+	'Allow Adding Request when having In Process Requests
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'AllowAddMoreRequests'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,=,"Y")
+		gui.Form.chkAllowAddMoreRequests.Value(True)
+	f.Intrinsic.Control.EndIf		
+
+	'PeriodDropdownValues
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'PeriodDropdownValues'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,<>,"")
+		f.Intrinsic.String.Split(v.Local.sRet,"@@@",v.Local.sRet)
+		'All checkbox
+		f.Intrinsic.Control.If(v.Local.sRet(0),=,"Y")
+			gui.Form.chkAll.Value(True)
+		f.Intrinsic.Control.EndIf
+		'Last 3 years checkbox
+		f.Intrinsic.Control.If(v.Local.sRet(1),=,"Y")
+			gui.Form.chkLast3Years.Value(True)
+		f.Intrinsic.Control.EndIf
+		'Last 365 days checkbox
+		f.Intrinsic.Control.If(v.Local.sRet(2),=,"Y")
+			gui.Form.chkLast365.Value(True)
+		f.Intrinsic.Control.EndIf
+		'Last 180 days checkbox
+		f.Intrinsic.Control.If(v.Local.sRet(3),=,"Y")
+			gui.Form.chkLast180.Value(True)
+		f.Intrinsic.Control.EndIf
+		'Last 30 days checkbox
+		f.Intrinsic.Control.If(v.Local.sRet(4),=,"Y")
+			gui.Form.chkLast30.Value(True)
+		f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.EndIf	
+	
+	'Use GSS Payroll. If checked, the vacation left will be deducted only when paycheck is issued. Otherwise, it will be deducted when the record is approved.
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'UseGSSPayroll'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,=,"Y")
+		gui.Form.chkUseGSSPayroll.Value(True)
+	f.Intrinsic.Control.EndIf
+	
+	'PTO/Vacation codes if use GSS Payroll
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'UNPAIDVAC'",v.Local.sRet)
+	gui.Form.txtUnpaidVacCodes.Text(v.Local.sRet)
+	
+	'PTO/Vacation codes if use GSS Payroll
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'PTOVAC'",v.Local.sRet)
+	gui.Form.txtPtoVacCodes.Text(v.Local.sRet)
+	
+	'Sick Time codes if use GSS Payroll
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'SICKVAC'",v.Local.sRet)
+	gui.Form.txtSickVacCodes.Text(v.Local.sRet)
+	
+	'Floating Holiday codes if use GSS Payroll
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'FLOATINGVAC'",v.Local.sRet)
+	gui.Form.txtFlaotingVacCodes.Text(v.Local.sRet)
+	
+	'Floating Hours if use GSS Payroll
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'FLOATINGBEGINNING'",v.Local.sRet)
+	gui.Form.txtFloatingHours.Text(v.Local.sRet)
+	
+	'System Email
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'SystemEmail'",v.Local.sRet)
+	gui.Form.txtSystemEmail.Text(v.Local.sRet)
+	
+	'EC Sort
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'ECSORT'",v.Local.sECSort)
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'DESCSORT'",v.Local.sDescrSort)
+	
+	'**** Obsolete, see Note 1 ********************************
+	'Pay Category
+'	f.Intrinsic.String.Build("Select Pay_Category as Category,ltrim(rtrim(Descr)) as Description from PAYROLL_PAY_CATS where Year = '{0}' Order by Category",v.Args.iCatYear,v.Local.sSQL)
+'	f.Data.DataTable.CreateFromSQL("Cat","conx",v.Local.sSQL,True)
+'	f.Intrinsic.Control.If(v.DataTable.Cat.RowCount,=,0)
+'		f.Intrinsic.UI.Msgbox("No Payroll Category found for the selected year in PAYROLL_PAY_CATS. Please setup Payroll Category for the selected year","End program")
+'		f.Intrinsic.Control.CallSub("Unload")
+'	f.Intrinsic.Control.EndIf	
+	'*********************************************************
+	
+	f.Data.DataTable.CreateFromSQL("Cat","conx","Select Category, Description from GCG_6138_EC Order By Category",True)
+	F.Data.Dictionary.CreateFromDataTable("dictCat","Cat","Category","Category")
+	Gui.Form.ddlECs.AddItem("All")
+	Gui.Form.ddlECs.ListIndex(0)
+	Gui.Form.ddlECs.AddItems("Dictionary","dictCat")
+	f.Data.DataTable.AddColumn("Cat","Delete","String","Delete")
+	f.Data.DataView.Create("Cat","CatDV")
+	
+	f.Data.DataTable.AddColumn("Cat","ActiveSelect","Boolean",False)
+	'Get Pay Category saved
+	f.Data.Dictionary.Create("ActiveCatDict")
+	
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'PayCategories'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,<>,"")
+		f.Intrinsic.String.Split(v.Local.sRet,"@@@",v.Local.sRet)
+		f.Intrinsic.Control.For(v.Local.iCnt,0,v.Local.sRet.UBound,1)
+			f.Intrinsic.String.Split(v.Local.sRet(v.Local.iCnt)," - ",v.Local.sHold)
+			f.Intrinsic.String.LPad(v.Local.sHold(0),"0",2,v.Local.sHold)	
+			f.Data.Dictionary.AddItem("ActiveCatDict",v.Local.sHold,True)			
+		f.Intrinsic.Control.Next(v.Local.iCnt)
+		f.Data.Dictionary.SetDefaultReturn("ActiveCatDict",False)
+		f.Data.DataTable.FillFromDictionary("Cat","ActiveCatDict","Category","ActiveSelect")
+	f.Intrinsic.Control.EndIf
+	
+	'Add gridview and format grid Category
+	gui.Form.gsCategory.AddGridviewFromDatatable("GVCat","Cat")
+	gui.Form.gsCategory.MainView("GVCat")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Category","Width","55")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Category","SortOrder",V.Local.sECSort)
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Description","Width","150")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Description","SortOrder",V.Local.sDescrSort)
+	gui.Form.gsCategory.SetColumnProperty("GVCat","ActiveSelect","Caption","Select")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","ActiveSelect","HeaderHAlignment","center")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","ActiveSelect","AllowEdit",True)
+	gui.Form.gsCategory.SetColumnProperty("GVCat","ActiveSelect","ReadOnly",False)
+	gui.Form.gsCategory.SetColumnProperty("GVCat","ActiveSelect","Width","30")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Delete","AllowEdit",False)
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Delete","ReadOnly",True)
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Delete","HeaderHAlignment","Center")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Delete","CellHAlignment","Center")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Delete","Width","30")
+	gui.Form.gsCategory.SetColumnProperty("GVCat","Delete","VisibleIndex",3)
+	gui.Form.gsCategory.ColumnEdit("GVCat","Delete","editorbutton","Delete")
+	
+	'Populate hours
+	f.Intrinsic.Control.For(v.Local.iCnt,0,23,1)
+		f.Intrinsic.String.LPad(v.Local.iCnt,"0",2,v.Local.sHold)
+		gui.Form.ddlDefautStartHour.AddItem(v.Local.sHold)
+		gui.Form.ddlDefautEndHour.AddItem(v.Local.sHold)
+	f.Intrinsic.Control.Next(v.Local.iCnt)
+	'Populate Minutes
+	f.Intrinsic.String.Split("00,15,30,45",",",v.Local.sHold)
+	f.Intrinsic.Control.For(v.Local.iCnt,0,3,1)
+		gui.Form.ddlDefautStartMinute.AddItem(v.Local.sHold(v.Local.iCnt))
+		gui.Form.ddlDefautEndMinute.AddItem(v.Local.sHold(v.Local.iCnt))
+		gui.Form.ddlDefautHourMinute.AddItem(v.Local.sHold(v.Local.iCnt))
+	f.Intrinsic.Control.Next(v.Local.iCnt)	
+	
+	'Default Start Time	
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'DefaultStartTime'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,<>,"")
+		f.Intrinsic.String.Split(v.Local.sRet,":",v.Local.sRet)
+		gui.Form.ddlDefautStartHour.Text(v.Local.sRet(0))
+		gui.Form.ddlDefautStartMinute.Text(v.Local.sRet(1))
+	f.Intrinsic.Control.Else
+		gui.Form.ddlDefautStartHour.ListIndex(8)
+		gui.Form.ddlDefautStartMinute.ListIndex(0)
+	f.Intrinsic.Control.EndIf	
+	
+	'Default End Time
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'DefaultEndTime'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,<>,"")
+		f.Intrinsic.String.Split(v.Local.sRet,":",v.Local.sRet)
+		gui.Form.ddlDefautEndHour.Text(v.Local.sRet(0))
+		gui.Form.ddlDefautEndMinute.Text(v.Local.sRet(1))
+	f.Intrinsic.Control.Else
+		gui.Form.ddlDefautEndHour.ListIndex(8)
+		gui.Form.ddlDefautEndMinute.ListIndex(0)
+	f.Intrinsic.Control.EndIf	
+	
+	'Default Hours
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'DefaultHours'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,<>,"")
+		f.Intrinsic.String.Split(v.Local.sRet,":",v.Local.sRet)
+		gui.Form.txtDefaultHourHour.Text(v.Local.sRet(0))
+		gui.Form.ddlDefautHourMinute.Text(v.Local.sRet(1))
+	f.Intrinsic.Control.Else
+		gui.Form.txtDefaultHourHour.Text("08")
+		gui.Form.ddlDefautHourMinute.ListIndex(0)
+	f.Intrinsic.Control.EndIf	
+	
+	'DefaultApprovedText
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'DefaultApprovedText'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,<>,"")
+		gui.Form.txtDefaultApprovedText.Text(v.Local.sRet.Trim)
+	f.Intrinsic.Control.EndIf
+	
+	'DefaultRejectedText
+	f.ODBC.Connection!conx.ExecuteAndReturn("Select OptionValue from GCG_6138_Maintenance where OptionName = 'DefaultRejectedText'",v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet,<>,"")
+		gui.Form.txtDefaultRejectedText.Text(v.Local.sRet.Trim)
+	f.Intrinsic.Control.EndIf
+	
+	'Bind Supervisor
+	f.Intrinsic.Control.CallSub("Bind_Supervisors")
+	
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Binding.End
+
+Program.Sub.cmdSave_Click.Start
+f.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sSQL.Declare
+	v.Local.iCnt.Declare
+	v.Local.sOptScanPrefix.Declare
+	v.Local.sOptUseAlphaSort.Declare
+	v.Local.sOptPeriodDropdownValues.Declare
+	v.Local.sOptPayCategories.Declare
+	v.Local.sOptDefaultStartTime.Declare
+	v.Local.sOptDefaultEndTime.Declare
+	v.Local.sOptDefaultHours.Declare
+	v.Local.sOptDefaultApprovedText.Declare
+	v.Local.sOptDefaultRejectedText.Declare
+	v.Local.sEarningCode.Declare
+	v.Local.sOptAllowAddMoreRequests.Declare
+	v.Local.sOptUseGssPayroll.Declare
+	v.Local.sOptSystemEmail.Declare
+	V.Local.sECSort.Declare
+	V.Local.sDescSort.Declare
+		
+	f.Intrinsic.UI.InvokeWaitDialog("Saving...")
+	f.Intrinsic.Control.If(v.DataTable.Opt.Exists)
+		f.Data.DataTable.Close("Opt")		
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.Create("Opt",True)
+	f.Data.DataTable.AddColumn("Opt","OptionName","String")
+	f.Data.DataTable.AddColumn("Opt","OptionValue","String")	
+
+	'ScanPrefix
+	f.Intrinsic.String.Replace(v.Screen.Form!txtPrefix.Text.Trim,"'",v.Ambient.DblQuote,v.Local.sOptScanPrefix)
+	f.Data.DataTable.AddRow("Opt","OptionName","ScanPrefix","OptionValue",v.Local.sOptScanPrefix)
+	
+	'UseAlphaSort
+	f.Intrinsic.Control.If(v.Screen.Form!chkUseAlpha.Value,=,1)
+		v.Local.sOptUseAlphaSort.Set("Y")
+	f.Intrinsic.Control.Else
+		v.Local.sOptUseAlphaSort.Set("N")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.AddRow("Opt","OptionName","UseAlphaSort","OptionValue",v.Local.sOptUseAlphaSort)
+	
+	'Allow Adding Request when having In Process Requests
+	f.Intrinsic.Control.If(v.Screen.Form!chkAllowAddMoreRequests.Value,=,1)
+		v.Local.sOptAllowAddMoreRequests.Set("Y")
+	f.Intrinsic.Control.Else
+		v.Local.sOptAllowAddMoreRequests.Set("N")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.AddRow("Opt","OptionName","AllowAddMoreRequests","OptionValue",v.Local.sOptAllowAddMoreRequests)
+	
+	'PeriodDropdownValues
+	f.Intrinsic.Control.If(v.Screen.Form!chkAll.Value,=,1)
+		v.Local.sOptPeriodDropdownValues.Set("Y")
+	f.Intrinsic.Control.Else
+		v.Local.sOptPeriodDropdownValues.Set("N")
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Screen.Form!chkLast3Years.Value,=,1)
+		f.Intrinsic.String.Build("{0}@@@Y",v.Local.sOptPeriodDropdownValues,v.Local.sOptPeriodDropdownValues)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.String.Build("{0}@@@N",v.Local.sOptPeriodDropdownValues,v.Local.sOptPeriodDropdownValues)
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Screen.Form!chkLast365.Value,=,1)
+		f.Intrinsic.String.Build("{0}@@@Y",v.Local.sOptPeriodDropdownValues,v.Local.sOptPeriodDropdownValues)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.String.Build("{0}@@@N",v.Local.sOptPeriodDropdownValues,v.Local.sOptPeriodDropdownValues)
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Screen.Form!chkLast180.Value,=,1)
+		f.Intrinsic.String.Build("{0}@@@Y",v.Local.sOptPeriodDropdownValues,v.Local.sOptPeriodDropdownValues)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.String.Build("{0}@@@N",v.Local.sOptPeriodDropdownValues,v.Local.sOptPeriodDropdownValues)
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.If(v.Screen.Form!chkLast30.Value,=,1)
+		f.Intrinsic.String.Build("{0}@@@Y",v.Local.sOptPeriodDropdownValues,v.Local.sOptPeriodDropdownValues)
+	f.Intrinsic.Control.Else
+		f.Intrinsic.String.Build("{0}@@@N",v.Local.sOptPeriodDropdownValues,v.Local.sOptPeriodDropdownValues)
+	f.Intrinsic.Control.EndIf	
+	f.Data.DataTable.AddRow("Opt","OptionName","PeriodDropdownValues","OptionValue",v.Local.sOptPeriodDropdownValues)
+	
+	'Use GSS Payroll
+	f.Intrinsic.Control.If(v.Screen.Form!chkUseGSSPayroll.Value,=,1)
+		v.Local.sOptUseGssPayroll.Set("Y")
+	f.Intrinsic.Control.Else
+		v.Local.sOptUseGssPayroll.Set("N")
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.AddRow("Opt","OptionName","UseGSSPayroll","OptionValue",v.Local.sOptUseGssPayroll)
+	
+	'PTOVAC
+	f.Intrinsic.Control.If(v.Screen.Form!txtPtoVacCodes.Text.Trim,=,"")
+		f.Intrinsic.UI.Msgbox("Please enter PTO code")
+		gui.Form.txtPtoVacCodes.SetFocus()
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	f.Data.DataTable.AddRow("Opt","OptionName","PTOVAC","OptionValue",v.Screen.Form!txtPtoVacCodes.Text.Trim)
+	
+	'SICKVAC
+	f.Intrinsic.Control.If(v.Screen.Form!txtSickVacCodes.Text.Trim,=,"")
+		f.Intrinsic.UI.Msgbox("Please enter Sick Time code")
+		gui.Form.txtSickVacCodes.SetFocus()
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	f.Data.DataTable.AddRow("Opt","OptionName","SICKVAC","OptionValue",v.Screen.Form!txtSickVacCodes.Text.Trim)
+	
+	'FLOATINGVAC
+	f.Intrinsic.Control.If(v.Screen.Form!txtFlaotingVacCodes.Text.Trim,=,"")
+		f.Intrinsic.UI.Msgbox("Please enter Floating Holiday code")
+		gui.Form.txtFlaotingVacCodes.SetFocus()
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	f.Data.DataTable.AddRow("Opt","OptionName","FLOATINGVAC","OptionValue",v.Screen.Form!txtFlaotingVacCodes.Text.Trim)
+	
+	'UNPAIDVAC
+	f.Intrinsic.Control.If(v.Screen.Form!txtUnpaidVacCodes.Text.Trim,=,"")
+		f.Intrinsic.UI.Msgbox("Please enter Unpaid Holiday code")
+		gui.Form.txtUnpaidVacCodes.SetFocus()
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	f.Data.DataTable.AddRow("Opt","OptionName","UNPAIDVAC","OptionValue",v.Screen.Form!txtUnpaidVacCodes.Text.Trim)
+	
+	'FLOATINGBEGINNING
+	f.Intrinsic.Control.If(v.Screen.Form!txtFloatingHours.Text.Trim,=,"")
+		f.Intrinsic.UI.Msgbox("Please enter Floating Holiday Beginning Balance")
+		gui.Form.txtFloatingHours.SetFocus()
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf	
+	f.Data.DataTable.AddRow("Opt","OptionName","FLOATINGBEGINNING","OptionValue",v.Screen.Form!txtFloatingHours.Text.Trim)
+	
+	'SystemEmail
+	v.Local.sOptSystemEmail.Set(v.Screen.Form!txtSystemEmail.Text.Trim)
+	f.Data.DataTable.AddRow("Opt","OptionName","SystemEmail","OptionValue",v.Local.sOptSystemEmail.PSQLFriendly)
+	
+	'EC Sort order
+	Gui.Form.gsCategory.GetColumnProperty("GVCat","Category","SortOrder",V.Local.sECSort)
+	F.Data.DataTable.AddRow("Opt","OptionName","ECSORT","OptionValue",V.Local.sECSort)
+	Gui.Form.gsCategory.GetColumnProperty("GVCat","Description","SortOrder",V.Local.sDescSort)
+	F.Data.DataTable.AddRow("Opt","OptionName","DESCSORT","OptionValue",V.Local.sDescSort)
+	
+	'PayCategories
+	f.Data.DataView.SetFilter("Cat","CatDV","ActiveSelect = 1")
+	F.Intrinsic.Control.If(V.Local.sECSort,=,"Ascending")
+		V.Local.sECSort.Set("Category asc")
+	F.Intrinsic.Control.ElseIf(V.Local.sECSort,=,"Descending")
+		V.Local.sECSort.Set("Category desc")
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.If(V.Local.sDescSort,=,"Ascending")
+		V.Local.sDescSort.Set("Description asc")
+	F.Intrinsic.Control.ElseIf(V.Local.sDescSort,=,"Descending")
+		V.Local.sDescSort.Set("Description desc")
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.If(V.Local.sECSort,!=,"None",and,V.Local.sDescSort,!=,"None")
+		F.Intrinsic.String.Build("{0}, {1}",V.Local.sECSort,V.Local.sDescSort,V.Local.sECSort)
+	F.Intrinsic.Control.ElseIf(V.Local.sDescSort,!=,"None")
+		V.Local.sECSort.Set(V.Local.sDescSort)
+	F.Intrinsic.Control.ElseIf(V.Local.sECSort,=,"None",and,V.Local.sDescSort,=,"None")
+		V.Local.sECSort.Set("")
+	F.Intrinsic.Control.EndIf
+	F.Data.DataView.SetSort("Cat","CatDV",V.Local.sECSort)
+	f.Intrinsic.Control.If(v.DataView.Cat!CatDV.RowCount,=,0)
+		f.Intrinsic.ui.Msgbox("Please select Categories","Validation")
+		f.Intrinsic.UI.CloseWaitDialog
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataView.Cat!CatDV.RowCount--,1)
+		f.Intrinsic.String.LPad(v.DataView.Cat!CatDV(v.Local.iCnt).Category!FieldValTrim,"0",2,v.Local.sEarningCode)
+		f.Intrinsic.Control.If(v.Local.iCnt,=,0)
+			f.Intrinsic.String.Build("{0} - {1}",v.Local.sEarningCode,v.DataView.Cat!CatDV(v.Local.iCnt).Description!FieldValTrim,v.Local.sOptPayCategories)			
+		f.Intrinsic.Control.Else
+			f.Intrinsic.String.Build("{0}@@@{1} - {2}",v.Local.sOptPayCategories,v.Local.sEarningCode,v.DataView.Cat!CatDV(v.Local.iCnt).Description!FieldValTrim,v.Local.sOptPayCategories)
+		f.Intrinsic.Control.EndIf	
+	f.Intrinsic.Control.Next(v.Local.iCnt)	
+	f.Data.DataTable.AddRow("Opt","OptionName","PayCategories","OptionValue",v.Local.sOptPayCategories)	
+	
+	'Save to GCG_6138_EC
+	f.ODBC.Connection!conx.Execute("Delete from GCG_6138_EC")
+	f.Intrinsic.Control.For(v.Local.iCnt,0,v.DataTable.Cat.RowCount--,1)
+		f.Intrinsic.String.Build("Insert into GCG_6138_EC (Category,Description) values ('{0}','{1}')",v.DataTable.Cat(v.Local.iCnt).Category!FieldValString,v.DataTable.Cat(v.Local.iCnt).Description!FieldValString,v.Local.sSQL)
+		f.ODBC.Connection!conx.Execute(v.Local.sSQL)
+	f.Intrinsic.Control.Next(v.Local.iCnt)	
+	
+	'DefaultStartTime
+	f.Intrinsic.String.Build("{0}:{1}",v.Screen.Form!ddlDefautStartHour.Text,v.Screen.Form!ddlDefautStartMinute.Text,v.Local.sOptDefaultStartTime)
+	f.Data.DataTable.AddRow("Opt","OptionName","DefaultStartTime","OptionValue",v.Local.sOptDefaultStartTime)
+	
+	'DefaultEndTime
+	f.Intrinsic.String.Build("{0}:{1}",v.Screen.Form!ddlDefautEndHour.Text,v.Screen.Form!ddlDefautEndMinute.Text,v.Local.sOptDefaultEndTime)
+	f.Data.DataTable.AddRow("Opt","OptionName","DefaultEndTime","OptionValue",v.Local.sOptDefaultEndTime)
+	
+	'DefaultHours
+	f.Intrinsic.String.Build("{0}:{1}",v.Screen.Form!txtDefaultHourHour.Text,v.Screen.Form!ddlDefautHourMinute.Text,v.Local.sOptDefaultHours)	
+	f.Data.DataTable.AddRow("Opt","OptionName","DefaultHours","OptionValue",v.Local.sOptDefaultHours)
+	
+	'DefaultApprovedText
+	f.Intrinsic.String.Replace(v.Screen.Form!txtDefaultApprovedText.Text.Trim,"'",v.Ambient.DblQuote,v.Local.sOptDefaultApprovedText)
+	f.Data.DataTable.AddRow("Opt","OptionName","DefaultApprovedText","OptionValue",v.Local.sOptDefaultApprovedText)
+	
+	'DefaultRejectedText
+	f.Intrinsic.String.Replace(v.Screen.Form!txtDefaultRejectedText.Text.Trim,"'",v.Ambient.DblQuote,v.Local.sOptDefaultRejectedText)
+	f.Data.DataTable.AddRow("Opt","OptionName","DefaultRejectedText","OptionValue",v.Local.sOptDefaultRejectedText)
+
+	'Save options
+	f.Data.DataTable.SaveToDB("Opt","conx","GCG_6138_Maintenance","OptionName*!*OptionName",256)	
+	f.Intrinsic.UI.CloseWaitDialog
+	
+	'Save Supervisors
+	f.ODBC.Connection!conx.Execute("Delete from GCG_6138_Supervisors")
+	f.Data.DataTable.SaveToDB("Supervisors","conx","GCG_6138_Supervisors","",128,"EmployeeID@!@EmployeeID*!*Name@!@Name*!*UserID@!@UserID*!*BalGroup@!@BalGroup*!*EC@!@EC")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdSave_Click.End
+
+Program.Sub.cmdBrowseManager_Click.Start
+'Browse employee
+F.Intrinsic.Control.Try
+v.Local..BulkDeclareString(sError,sRet)
+
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+	Function.Intrinsic.UI.Browser("Select Employee","conx","Select Employee,Name,PR_User_ID as UserID from Employee_Mstr where DATE_TERMINATION = '000000'","Employee*!*Name*!*UserID","200*!*500*!*200",Variable.Local.sRet)
+	F.Intrinsic.Control.If(Variable.Local.sRet.IsCancel,=,False)
+		F.Intrinsic.String.Split(Variable.Local.sRet,"*!*",Variable.Local.sRet)
+		gui.Form.txtManager.Text(v.Local.sRet(0))
+		gui.Form.txtNameManager.Text(v.Local.sRet(1))
+		gui.Form.txtUserIDManager.Text(v.Local.sRet(2))
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseManager_Click.End
+
+Program.Sub.cmdBrowseDept_Click.Start
+'Browse Department
+F.Intrinsic.Control.Try
+v.Local..BulkDeclareString(sError,sRet)
+
+	F.Intrinsic.UI.SetBrowserHotTypeAhead(True)
+'	f.Intrinsic.UI.Browser(70,"",v.Local.sRet)
+	f.Intrinsic.UI.Browser("Balancing Groups","conx","select BAL_GROUP, DESCR from V_BALANCING_GROUP order by BAL_GROUP;","Group ID*!*Description","15*!*50",v.Local.sRet)
+	F.Intrinsic.Control.If(Variable.Local.sRet.IsCancel,=,False)
+		F.Intrinsic.String.Split(Variable.Local.sRet,"*!*",Variable.Local.sRet)
+		gui.Form.txtDept.Text(v.Local.sRet(0))
+		gui.Form.txtDescrDept.Text(v.Local.sRet(1))
+	F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdBrowseDept_Click.End
+
+Program.Sub.cmdAddManager_Click.Start
+'Add Manager - Department
+F.Intrinsic.Control.Try
+v.Local..BulkDeclareString(sError,sRet,sSQL,sUserID)
+
+	f.Intrinsic.String.UCase(v.Screen.Form!txtUserIDManager.Text.Trim,v.Local.sUserID)
+	f.Intrinsic.Control.If(v.Local.sUserID,=,"")
+		f.Intrinsic.UI.Msgbox("Please specify User ID for the manager")
+		f.Intrinsic.Control.ExitSub	
+	f.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.Screen.Form!ddlECs.Text.Trim,=,"")
+		F.Intrinsic.UI.Msgbox("Please specify an Earnings Code")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	F.Intrinsic.Control.If(V.Screen.Form!txtDept.Text.Trim,=,"")
+		F.Intrinsic.UI.Msgbox("Please specify a Balance Group")
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	
+	f.Intrinsic.String.Build("Select Employee,Name from Employee_MSTR where PR_User_ID = '{0}' and Employee = '{1}'",v.Local.sUserID,v.Screen.Form!txtManager.Text,v.Local.sSQL)
+	f.ODBC.Connection!conx.ExecuteAndReturn(v.Local.sSQL,v.Local.sRet)
+	f.Intrinsic.Control.If(v.Local.sRet.Trim,=,"")
+		f.Intrinsic.UI.Msgbox("Employee ID and User ID do not match","Attention")	
+		f.Intrinsic.Control.ExitSub	
+	f.Intrinsic.Control.EndIf	
+	
+	f.Data.DataTable.AddRow("Supervisors","EmployeeID",v.Screen.Form!txtManager.Text,"Name",v.Screen.Form!txtNameManager.Text.Trim,"UserID",v.Local.sUserID,"BalGroup",v.Screen.Form!txtDept.Text,"EC",v.Screen.Form!ddlECs.Text.Trim,"Delete","Delete")
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdAddManager_Click.End
+
+Program.Sub.Bind_Supervisors.Start
+F.Intrinsic.Control.Try
+	v.Local..BulkDeclareString(sError,sRet)
+
+	f.Intrinsic.Control.If(v.DataTable.Supervisors.Exists)
+		f.Data.DataTable.Close("Supervisors")
+	f.Intrinsic.Control.EndIf
+	f.data.DataTable.CreateFromSQL("Supervisors","conx","Select EmployeeID,ltrim(rtrim(Name)) as Name,UserID,rtrim(BalGroup) as BalGroup,rtrim(EC) as EC from GCG_6138_Supervisors order by EmployeeID",True)
+	f.Data.DataTable.AddColumn("Supervisors","Delete","String","Delete")
+	
+	gui.Form.gsSupervisors.AddGridviewFromDatatable("GVSup","Supervisors")
+	
+	'General format for the grid
+	gui.Form.gsSupervisors.SetGridViewProperty("GVSup","AllowSort",True)
+	gui.Form.gsSupervisors.SetGridViewProperty("GVSup","AllowFilter",True)
+	gui.Form.gsSupervisors.SetGridViewProperty("GVSup","OptionsFindAlwaysVisible",True)
+	gui.Form.gsSupervisors.SetGridViewProperty("GVSup","EnableAppearanceOddRow",False)
+	gui.Form.gsSupervisors.SetGridViewProperty("GVSup","OptionsViewShowAutoFilterRow",True)
+	
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","EmployeeID","HeaderFontBold",True)
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","Name","HeaderFontBold",True)
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","UserID","HeaderFontBold",True)
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","BalGroup","HeaderFontBold",True)
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","EC","HeaderFontBold",True)
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","Delete","HeaderFontBold",True)
+	
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","EmployeeID","Caption","Employee ID")
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","UserID","Caption","User ID")
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","BalGroup","Caption","Balance Group")
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","EC","Caption","Earning Code")	
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","Delete","ShowCaption",False)	
+	
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","Delete","AllowEdit",False)
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","Delete","ReadOnly",True)
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","Delete","HeaderHAlignment","Center")
+	gui.Form.gsSupervisors.SetColumnProperty("GVSup","Delete","CellHAlignment","Center")
+	gui.Form.gsSupervisors.ColumnEdit("GVSup","Delete","editorbutton","Delete")
+	gui.Form.gsSupervisors.MainView("GVSup")	
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.Bind_Supervisors.End
+
+Program.Sub.gsSupervisors_RowCellClick.Start
+F.Intrinsic.Control.Try
+	v.Local..BulkDeclareString(sError,sRet)
+
+	f.Intrinsic.Control.If(v.Args.Column,=,"Delete")
+		f.Data.DataTable.DeleteRow("Supervisors",v.Args.RowIndex)
+		f.Data.DataTable.Acceptchanges("Supervisors")
+	f.Intrinsic.Control.EndIf
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsSupervisors_RowCellClick.End
+
+Program.Sub.gsCategory_RowCellClick.Start
+F.Intrinsic.Control.Try
+	v.Local..BulkDeclareString(sError,sRet)
+
+	f.Intrinsic.Control.If(v.Args.Column,=,"Delete")
+		f.Data.DataTable.DeleteRow("Cat",v.Args.RowIndex)
+		f.Data.DataTable.Acceptchanges("Cat")
+	f.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsCategory_RowCellClick.End
+
+Program.Sub.cmdAddEC_Click.Start
+F.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	v.Local.sFilter.Declare
+	v.Local.sECCode.Declare
+	
+	f.Intrinsic.String.LPad(v.Screen.Form!txtEarningCode.Text,"0",2,v.Local.sECCode)
+	f.Intrinsic.String.Build("Category = '{0}' and Description = '{1}'",v.Local.sECCode,v.Screen.Form!txtECDescr.Text.Trim,v.Local.sFilter)
+	f.Data.DataView.SetFilter("Cat","CatDV",v.Local.sFilter)
+	f.Intrinsic.Control.If(v.DataView.Cat!CatDV.RowCount,>,0)
+		f.Intrinsic.UI.Msgbox("EC and Description combination already exists in the grid","Attention")
+		f.Intrinsic.Control.ExitSub
+	f.Intrinsic.Control.EndIf
+	f.Data.DataTable.AddRow("Cat","Category",v.Local.sECCode,"Description",v.Screen.Form!txtECDescr.Text.Trim)
+	Gui.Form.ddlECs.AddItem(V.Local.sECCode)
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdAddEC_Click.End
+
+Program.Sub.chkUseGSSPayroll_Click.Start
+F.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	
+	f.Intrinsic.Control.If(v.Screen.Form!chkUseGSSPayroll.Value,=,1)
+		gui.Form.txtPtoVacCodes.Enabled(True)
+	f.Intrinsic.Control.Else
+		gui.Form.txtPtoVacCodes.Enabled(False)
+	f.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.chkUseGSSPayroll_Click.End
+
+Program.Sub.txtManager_LostFocus.Start
+F.Intrinsic.Control.Try
+	V.Local.sError.Declare
+	V.Local.sEmployee.Declare
+	
+	F.Intrinsic.String.LPad(V.Screen.Form!txtManager.Text.Trim,"0",5,V.Local.sEmployee)
+	F.Intrinsic.String.Build("select EMPLOYEE, NAME, PR_USER_ID from EMPLOYEE_MSTR where EMPLOYEE = '{0}' and DATE_TERMINATION = '000000';",V.Local.sEmployee,V.Local.sEmployee)
+	F.ODBC.Connection!conEmployee.OpenCompanyConnection
+	F.ODBC.Connection!conEmployee.ExecuteAndReturn(V.Local.sEmployee,V.Local.sEmployee)
+	F.ODBC.Connection!conEmployee.Close
+	F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+		F.Intrinsic.String.Split(V.Local.sEmployee,"*!*",V.Local.sEmployee)
+		Gui.Form.txtManager.Text(V.Local.sEmployee(0).Trim)
+		Gui.Form.txtNameManager.Text(V.Local.sEmployee(1).Trim)
+		Gui.Form.txtUserIDManager.Text(V.Local.sEmployee(2).Trim)
+	F.Intrinsic.Control.Else
+		Gui.Form.txtNameManager.Text("")
+		Gui.Form.txtUserIDManager.Text("")
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.txtManager_LostFocus.End
+
+Program.Sub.txtDept_LostFocus.Start
+F.Intrinsic.Control.Try
+	v.Local.sError.Declare
+	V.Local.sBalGrp.Declare
+	
+	V.Local.sBalGrp.Set(V.Screen.Form!txtDept.Text.Trim)
+	F.Intrinsic.Control.If(V.Local.sBalGrp.UCase,=,"ALL")
+		Gui.Form.txtDept.Text("All")
+		Gui.Form.txtDescrDept.Text("")
+	F.Intrinsic.Control.Else
+		F.Intrinsic.String.Build("select BAL_GROUP, DESCR from V_BALANCING_GROUP where upper(BAL_GROUP) = upper('{0}');",V.Local.sBalGrp,V.Local.sBalGrp)
+		F.ODBC.Connection!conBalGrp.OpenCompanyConnection
+		F.ODBC.Connection!conBalGrp.ExecuteAndReturn(V.Local.sBalGrp,V.Local.sBalGrp)
+		F.ODBC.Connection!conBalGrp.Close
+		F.Intrinsic.Control.If(V.Ambient.ExecuteAndReturnEOF.Not)
+			F.Intrinsic.String.Split(V.Local.sBalGrp,"*!*",V.Local.sBalGrp)
+			Gui.Form.txtDept.Text(V.Local.sBalGrp(0).Trim)
+			Gui.Form.txtDescrDept.Text(V.Local.sBalGrp(1).Trim)
+		F.Intrinsic.Control.Else
+			Gui.Form.txtDescrDept.Text("")
+		F.Intrinsic.Control.EndIf
+	F.Intrinsic.Control.EndIf
+	
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.txtDept_LostFocus.End
+
+'0 - None 	'1 - Top 	'2 - Bottom 	'4 - Left 	'8 - Right
+Program.Sub.GetCanceledReqs.Start
+V.Local.sError.Declare
+V.Local.iCanceledCnt.Declare
+V.Local.iDateTimeBeg.Declare
+V.Local.dDateBeg.Declare
+V.Local.sDateBeg.Declare
+V.Local.iDateTimeEnd.Declare
+V.Local.dDateEnd.Declare
+V.Local.sDateEnd.Declare
+V.Local.iVisibleIndex.Declare
+F.Intrinsic.Control.Try
+
+'query custom table and get ALL custom requests that have been canceled
+F.Data.DataTable.CreateFromSQL("dtCanceled","conx","select REQID, SEQ, EMPLOYEE, BALGRP, SHIFT, rtrim(ABSENCE_DESC) as ABSENCE_DESC, DATEIN, TIMEIN, DATEOUT, TIMEOUT, HOURS, rtrim(NOTE) as NOTE, EC, rtrim(ECDESCR) as ECDESCR, PAID, DATETIMESUBMITTED as SUBMIT_INT from GCG_6138_ABSENCE where STATUS = 'Canceled' order by REQID, SEQ;",True)
+F.Data.Dictionary.CreateFromSQL("dictEmployeeName","conx","select EMPLOYEE, rtrim(NAME) from V_EMPLOYEE_MSTR;")
+
+F.Data.DataTable.AddColumn("dtCanceled","SELECT","Boolean",False)
+F.Data.DataTable.AddColumn("dtCanceled","EMPLOYEE_NAME","String")
+F.Data.DataTable.AddColumn("dtCanceled","Date2010","DateTime",1/1/2010 12:00:00 AM)
+F.Data.DataTable.AddColumn("dtCanceled","DateTimeSubmitted","DateTime")
+F.Data.DataTable.DateAdd("dtCanceled","Date2010","h","SUBMIT_INT","DateTimeSubmitted")
+
+F.Data.Dictionary.SetDefaultReturn("dictEmployeeName","")
+F.Data.DataTable.FillFromDictionary("dtCanceled","dictEmployeeName","EMPLOYEE","EMPLOYEE_NAME")
+F.Data.Dictionary.Close("dictEmployeeName")
+
+F.Data.DataTable.Compute("dtCanceled","count(PAID)","",V.Local.iCanceledCnt)
+Gui.Form.txtCanceledNum.Text(V.Local.iCanceledCnt.String)
+F.Intrinsic.Control.If(V.Local.iCanceledCnt,>,0)
+	Gui.Form.TabControl.SetTab(2)
+	Gui.Form.TabControl.Caption("*Canceled Requests*")
+	
+	F.Data.DataTable.Compute("dtCanceled","min(SUBMIT_INT)","",V.Local.iDateTimeBeg)
+	F.Intrinsic.Date.DateAdd("h",V.Local.iDateTimeBeg,1/1/2010,V.Local.dDateBeg)
+	F.Intrinsic.String.Format(V.Local.dDateBeg,"M/D/YYYY",V.Local.sDateBeg)
+	Gui.Form.txtCanceledBeg.Text(V.Local.sDateBeg)
+	
+	F.Data.DataTable.Compute("dtCanceled","max(SUBMIT_INT)","",V.Local.iDateTimeEnd)
+	F.Intrinsic.Date.DateAdd("h",V.Local.iDateTimeEnd,1/1/2010,V.Local.dDateEnd)
+	F.Intrinsic.String.Format(V.Local.dDateEnd,"M/D/YYYY",V.Local.sDateEnd)
+	Gui.Form.txtCanceledEnd.Text(V.Local.sDateEnd)
+F.Intrinsic.Control.Else
+	Gui.Form.TabControl.SetTab(2)
+	Gui.Form.TabControl.Caption("Canceled Requests")
+	
+	Gui.Form.txtCanceledBeg.Text("")
+	
+	Gui.Form.txtCanceledEnd.Text("")
+F.Intrinsic.Control.EndIf
+
+F.Data.DataView.Create("dtCanceled","dvDelCheck")
+F.Data.DataView.SetFilter("dtCanceled","dvDelCheck","[SELECT] = True")
+
+Gui.Form.gsgcCanceled.AddGridviewFromDatatable("gvCanceled","dtCanceled")
+
+Gui.Form.gsgcCanceled.SetGridviewProperty("gvCanceled","Editable",False)
+Gui.Form.gsgcCanceled.SetGridviewProperty("gvCanceled","OptionsViewColumnAutoWidth",False)
+Gui.Form.gsgcCanceled.SetGridviewProperty("gvCanceled","OptionsFilterUseNewCustomFilterDialog",True)
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SUBMIT_INT","Visible",False)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SUBMIT_INT","AllowShowHide",False)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","Date2010","Visible",False)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","Date2010","AllowShowHide",False)
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SELECT","Fixed","Left")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SELECT","AllowShowHide",False)
+
+V.Local.iVisibleIndex.Set(-1)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SELECT","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","REQID","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SEQ","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DateTimeSubmitted","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE_NAME","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","BALGRP","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SHIFT","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ABSENCE_DESC","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEIN","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEIN","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEOUT","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEOUT","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","HOURS","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","NOTE","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EC","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ECDESCR","VisibleIndex",V.Local.iVisibleIndex.++)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","PAID","VisibleIndex",V.Local.iVisibleIndex.++)
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SELECT","ShowCaption",False)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","REQID","Caption","Req ID")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SEQ","Caption","Req Seq")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DateTimeSubmitted","Caption","Submitted on")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE","Caption","Employee Num.")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE_NAME","Caption","Employee")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","BALGRP","Caption","Balance Group")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SHIFT","Caption","Shift")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ABSENCE_DESC","Caption","Absence Description")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEIN","Caption","Date In")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEIN","Caption","Time In")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEOUT","Caption","Date Out")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEOUT","Caption","Time Out")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","HOURS","Caption","Hours")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","NOTE","Caption","Note")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EC","Caption","EC")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ECDESCR","Caption","EC")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","PAID","Caption","Paid?")
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","REQID","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SEQ","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DateTimeSubmitted","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE_NAME","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","BALGRP","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SHIFT","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ABSENCE_DESC","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEIN","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEIN","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEOUT","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEOUT","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","HOURS","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","NOTE","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EC","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ECDESCR","HeaderFontBold",True)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","PAID","HeaderFontBold",True)
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","REQID","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SEQ","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DateTimeSubmitted","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE_NAME","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","BALGRP","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SHIFT","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ABSENCE_DESC","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEIN","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEIN","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEOUT","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEOUT","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","HOURS","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","NOTE","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EC","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ECDESCR","HeaderHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","PAID","HeaderHAlignment","Center")
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","REQID","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SEQ","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DateTimeSubmitted","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE_NAME","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","BALGRP","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SHIFT","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ABSENCE_DESC","CellHAlignment","Near")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEIN","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEIN","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEOUT","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","TIMEOUT","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","HOURS","CellHAlignment","Center")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","NOTE","CellHAlignment","Left")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EC","CellHAlignment","Left")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","ECDESCR","CellHAlignment","Left")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","PAID","CellHAlignment","Left")
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SELECT","Width",25)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","SELECT","AllowSize",False)
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DateTimeSubmitted","DisplayCustomDateTime","d")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEIN","DisplayCustomDateTime","d")
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","DATEOUT","DisplayCustomDateTime","d")
+
+Gui.Form.gsgcCanceled.MainView("gvCanceled")
+
+Gui.Form.gsgcCanceled.BestFitColumns("gvCanceled")
+
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EMPLOYEE","Visible",False)
+Gui.Form.gsgcCanceled.SetColumnProperty("gvCanceled","EC","Visible",False)
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.GetCanceledReqs.End
+
+Program.Sub.gsgcCanceled_RowCellClick.Start
+V.Local.sError.Declare
+V.Local.sFilter.Declare
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.SelectCase(V.Args.Column.UCase)
+	F.Intrinsic.Control.Case("SELECT")
+		F.Intrinsic.Control.If(V.Args.Button.UCase,=,"LEFT")
+			F.Data.DataTable.SetValue("dtCanceled",V.Args.RowIndex,"SELECT",V.Args.CellValue.Not)
+		F.Intrinsic.Control.Else
+			Gui.Form.gsgcCanceled.GetGridviewProperty("gvCanceled","ActiveFilterString",V.Local.sFilter)
+			F.Data.DataView.Create("dtCanceled","dv")
+			F.Data.DataView.SetFilter("dtCanceled","dv",V.Local.sFilter)
+			F.Data.DataView.SetValue("dtCanceled","dv",-1,"SELECT",V.Args.CellValue.Not)
+			F.Data.DataView.Close("dtCanceled","dv")
+		F.Intrinsic.Control.EndIf
+		F.Intrinsic.Control.If(V.DataView.dtCanceled!dvDelCheck.RowCount,>,0)
+			Gui.Form.cmdCanceledDel.Caption("*Delete*")
+		F.Intrinsic.Control.Else
+			Gui.Form.cmdCanceledDel.Caption("Delete")
+		F.Intrinsic.Control.EndIf
+F.Intrinsic.Control.EndSelect
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.Control.If(V.Ambient.ErrorNumber,=,21056)
+		F.Intrinsic.String.Build("An unusuable filter was used to select all canceled requests. Please see below:{1}Error Description: {4}{1}GAB Version: {5}{1}This program will not close. Please change the filter and try again.",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+		F.Intrinsic.UI.Msgbox(V.Local.sError)
+		F.Data.DataView.Close("dtCanceled","dv")
+		F.Intrinsic.Control.ClearErrors
+		F.Intrinsic.Control.ExitSub
+	F.Intrinsic.Control.EndIf
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.gsgcCanceled_RowCellClick.End
+
+Program.Sub.cmdCanceledDel_Click.Start
+V.Local.sError.Declare
+F.Intrinsic.Control.Try
+
+F.Intrinsic.Control.If(V.DataView.dtCanceled!dvDelCheck.RowCount,=,0)
+	F.Intrinsic.Control.ExitSub
+F.Intrinsic.Control.EndIf
+
+F.Intrinsic.Control.BlockEvents
+
+Gui.Form.cmdCanceledDel.Caption("Delete")
+
+F.Data.DataView.ToDataTable("dtCanceled","dvDelCheck","dtCanceledSave",False)
+F.Data.DataTable.AcceptChanges("dtCanceledSave")
+F.Data.DataTable.DeleteRow("dtCanceledSave")
+
+'Mode 4 only reconciles the Deletes against the database
+F.Data.DataTable.SaveToDB("dtCanceledSave","conx","GCG_6138_ABSENCE","REQID*!*SEQ",4)
+
+F.Data.DataTable.Close("dtCanceledSave")
+F.Data.DataTable.Close("dtCanceled")
+
+F.Intrinsic.Control.CallSub(GetCanceledReqs)
+
+F.Intrinsic.Control.UnBlockEvents
+
+F.Intrinsic.Control.Catch
+	F.Intrinsic.String.Build("Project: {0}{1}Subroutine: {2}{1}Subroutine called from:{6}{1}Error Occurred: {3}{1}Description: {4}{1}GAB Version: {5}",V.Ambient.ScriptPath,V.Ambient.Newline,V.Ambient.CurrentSubroutine,V.Ambient.ErrorNumber,V.Ambient.ErrorDescription,V.Ambient.GABVersion,v.Ambient.SubroutineCalledFrom,V.Local.sError)
+	F.Intrinsic.UI.Msgbox(V.Local.sError)
+	f.Intrinsic.Control.CallSub("Unload")
+F.Intrinsic.Control.EndTry
+Program.Sub.cmdCanceledDel_Click.End
+
+Program.Sub.Comments.Start
+${$5$}$2.0.0.0$}$2
+${$6$}$bbaker$}$20210819103224420$}$pM7xsHplA2E9VCTenDTJ47gi1rF/t66WhRPXdMQ89omYn6GEK/ujcx/Ub0MKSFfPzzM/RVZTKMg=
+Program.Sub.Comments.End
